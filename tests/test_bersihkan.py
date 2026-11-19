@@ -5,3 +5,7 @@ def test_negasi_dipertahankan():
 
 def test_normalisasi_dan_tautan():
     assert bersihkan_teks("Mantap bgt https://x.co") == "mantap banget"
+
+def test_huruf_berulang_dan_singkatan():
+    assert bersihkan_teks("kerennn") == "keren"
+    assert bersihkan_teks("g bisa lg") == "tidak bisa lagi"

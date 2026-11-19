@@ -7,6 +7,9 @@ NORMALISASI = {
     "udah": "sudah", "sdh": "sudah", "blm": "belum", "yg": "yang",
     "dgn": "dengan", "utk": "untuk", "krn": "karena", "tp": "tapi",
     "jg": "juga", "gmn": "bagaimana", "gimana": "bagaimana",
+    "g": "tidak", "lg": "lagi", "dg": "dengan", "ttp": "tetap",
+    "sampe": "sampai", "tpi": "tapi", "pake": "pakai", "emg": "memang",
+    "bs": "bisa", "sy": "saya",
 }
 STOPWORDS = {"yang", "di", "ke", "dari", "dan", "atau", "itu", "ini",
              "untuk", "dengan", "adalah", "pada", "juga", "ada"}
@@ -15,6 +18,7 @@ def bersihkan_teks(teks):
     teks = str(teks).lower()
     teks = re.sub(r"http\S+|www\.\S+", " ", teks)
     teks = re.sub(r"[^a-z\s]", " ", teks)
+    teks = re.sub(r"(.)\1{2,}", r"\1", teks)
     hasil = []
     for kata in teks.split():
         kata = NORMALISASI.get(kata, kata)
