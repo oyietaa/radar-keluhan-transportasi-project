@@ -30,9 +30,8 @@ def bersihkan_df(df):
     df = df.dropna(subset=["content"]).copy()
     df["teks_asli"] = df["content"].astype(str)
     df["teks_bersih"] = df["teks_asli"].map(bersihkan_teks)
-    df = df[df["teks_bersih"].str.split().str.len() >= 2]
+    df = df[df["teks_bersih"].str.split().str.len() >= 1]
     df = df.drop_duplicates(subset="reviewId")
-    df = df.drop_duplicates(subset="teks_bersih")
     df["at"] = pd.to_datetime(df["at"])
     df["thumbsUpCount"] = pd.to_numeric(df["thumbsUpCount"], errors="coerce")
     df = df.dropna(subset=["thumbsUpCount", "score"])
