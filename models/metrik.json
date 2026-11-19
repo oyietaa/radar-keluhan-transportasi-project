@@ -1,5 +1,8 @@
 {
   "sentimen_akurasi": 0.816,
   "regresi_mae": 1.29,
-  "regresi_r2": -0.003
+  "regresi_r2": -0.003,
+  "mae_tebak_nol": 0.923,
+  "mae_tebak_rata2": 1.378,
+  "persen_membantu_nol": 88.6
 }
