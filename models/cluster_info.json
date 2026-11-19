@@ -1,0 +1,62 @@
+{
+  "0": {
+    "kata": [
+      "membantu",
+      "perjalanan",
+      "bagus",
+      "pelayanan",
+      "baik"
+    ],
+    "jumlah": 335,
+    "contoh": [
+      "k dpn bs lbh bagus lg",
+      "sangat bagus untuk pelayanan tiketnya makin sunset Dan makin Jaya kereta api Indonesia",
+      "suka naik kereta love KAI"
+    ]
+  },
+  "1": {
+    "kata": [
+      "mudah",
+      "digunakan",
+      "cepat",
+      "membantu",
+      "pemesanan"
+    ],
+    "jumlah": 96,
+    "contoh": [
+      "cara yg mudah untuk beli tiket tidak usah ngantri di loket di stasion",
+      "Lebih mudah online pesen tiket nya.",
+      "mudah digunakan, tidak ribet, dan bisa sewaktu-waktu pesan tanpa harus langsung ke setasiun"
+    ]
+  },
+  "2": {
+    "kata": [
+      "tidak",
+      "bisa",
+      "kenapa",
+      "jadwal",
+      "muncul"
+    ],
+    "jumlah": 460,
+    "contoh": [
+      "gak bisa masuk sandi salah padahal benar",
+      "enggak bisa di install min untuk hp Oppo a 15 versi android 10",
+      "aplikasi gak jelas daftar member basic nomer udah bener tpy GK BS daftar..kocak"
+    ]
+  },
+  "3": {
+    "kata": [
+      "malah",
+      "tidak",
+      "error",
+      "tapi",
+      "update"
+    ],
+    "jumlah": 894,
+    "contoh": [
+      "mau mengetik di pencarian selalu balik2 sendiri tombol keypad nya",
+      "Anjay aplikasi lemot dapat rating 4.8, mau ngetik aja lemotnya minta ampun. udah gitu maksa untuk daftar pakai KTP agar bisa booking. Minta data pribadi tapi maksa",
+      "kenapa mau menambah data penumpang. keyboard hp malah naik turun. saya pikir hp saya yg eror. minya tolong ke teman. sama saja ternyata. tolong dong sistemnya perbaiki"
+    ]
+  }
+}
