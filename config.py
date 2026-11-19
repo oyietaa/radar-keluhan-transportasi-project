@@ -1,7 +1,7 @@
 from pathlib import Path
 
 BASE = Path(__file__).parent
-APP_ID = "ISI_ID_APLIKASI"
+APP_ID = "com.kai.kaiticketing"
 LANG, COUNTRY = "id", "id"
 RAW_DIR = BASE / "data" / "raw"
 CLEAN_CSV = BASE / "data" / "clean" / "ulasan_bersih.csv"
