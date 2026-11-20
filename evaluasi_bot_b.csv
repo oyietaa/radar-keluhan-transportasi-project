@@ -1,0 +1,29 @@
+kalimat,intent
+halo apa kabar,salam
+selamat malam admin,salam
+dadah dulu ya,perpisahan
+terima kasih atas penjelasannya,terima_kasih
+kamu ini robot apa,identitas
+fungsi kamu apa,identitas
+berapa persen pengguna yang tidak puas,sentimen
+apakah ulasannya lebih banyak positif,sentimen
+hasil sentimennya bagaimana,sentimen
+apa yang paling banyak dikomplain pengguna,tema
+kategori keluhan terbanyak apa,tema
+masalah utama aplikasi ini apa,tema
+nilai rata-rata ulasan berapa,rating
+berapa bintang rata rata aplikasi,rating
+total data yang dianalisis berapa,jumlah_data
+ada berapa ulasan di dataset,jumlah_data
+data diperbarui terakhir tanggal berapa,status_pipeline
+apakah skrip otomatis sudah jalan,status_pipeline
+arti mae itu bagaimana,arti_mae
+mae kecil itu bagus atau tidak,arti_mae
+r2 mendekati nol itu apa,arti_r2
+kenapa nilai r kuadrat jelek,arti_r2
+apa kelemahan dari dashboard ini,keterbatasan
+seberapa akurat model sentimennya,keterbatasan
+bagaimana cara membatalkan tiket,fallback
+jadwal kereta jakarta bandung,fallback
+ceritakan lelucon,fallback
+rekomendasi hotel di bandung,fallback
