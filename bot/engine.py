@@ -10,6 +10,9 @@ NORMALISASI = {
     "kak": "", "min": "", "dong": "", "sih": "", "nih": "", "ya": "",
     "makasih": "terima kasih", "thanks": "terima kasih",
     "hai": "halo", "hi": "halo", "hello": "halo",
+    "ketemu": "bertemu", "aja": "saja", "jelek": "negatif", "buruk": "negatif",
+    "mengeluh": "keluhan", "komplain": "keluhan", "dikeluhkan": "keluhan",
+    "kekurangan": "kelemahan", "dipercaya": "akurat",
 }
 STOPWORDS = {"yang", "di", "ke", "dari", "dan", "atau", "itu", "ini", "untuk",
              "dengan", "adalah", "apa", "saya", "mau", "ingin", "tolong",
@@ -17,10 +20,13 @@ STOPWORDS = {"yang", "di", "ke", "dari", "dan", "atau", "itu", "ini", "untuk",
 BOBOT_JACCARD, BOBOT_FUZZY, BOBOT_CAKUPAN = 0.4, 0.3, 0.3
 
 def preprocess(teks):
-    teks = re.sub(r"[^a-z0-9\s]", " ", teks.lower())
+    teks = teks.lower().replace("r kuadrat", "r2")
+    teks = re.sub(r"[^a-z0-9\s]", " ", teks)
     tokens = []
     for kata in teks.split():
         for k in NORMALISASI.get(kata, kata).split():
+            if len(k) > 5 and k.endswith("nya"):
+                k = k[:-3]
             if k and k not in STOPWORDS:
                 tokens.append(k)
     return tokens

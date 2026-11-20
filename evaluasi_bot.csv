@@ -1,0 +1,68 @@
+kalimat,intent
+halo selamat pagi bot,salam
+selamat siang bot,salam
+hai bot,salam
+permisi mau tanya,salam
+oke sudah cukup dulu ya,perpisahan
+sampai ketemu lagi,perpisahan
+sampai jumpa lagi ya,perpisahan
+thanks ya,terima_kasih
+terima kasih banyak atas bantuannya,terima_kasih
+makasih ya bantuannya,terima_kasih
+ini bot buat apa,identitas
+kamu siapa sih,identitas
+kamu itu apa sebenarnya,identitas
+kamu bisa jawab apa saja,identitas
+bot ini bisa bantu apa aja,identitas
+lebih banyak yang puas atau yang kecewa,sentimen
+berapa persen yang bilang aplikasinya jelek,sentimen
+persen netral berapa,sentimen
+gimana komposisi sentimen ulasannya,sentimen
+seberapa banyak ulasan yang negatif,sentimen
+persentase ulasan positif berapa,sentimen
+bagaimana gambaran sentimen pengguna,sentimen
+orang paling sering mengeluh soal apa,tema
+apa topik komplain yang paling banyak,tema
+tema ulasan apa yang paling besar,tema
+masalah apa yang sering dikeluhkan,tema
+tema keluhan yang dominan apa,tema
+keluhan paling sering muncul apa,tema
+bintang rata-ratanya berapa,rating
+skor rata rata aplikasi ini,rating
+nilai bintang rata-rata berapa,rating
+rating aplikasi ini berapa,rating
+ulasan yang dianalisis ada berapa,jumlah_data
+jumlah baris datanya berapa,jumlah_data
+seberapa besar datasetnya,jumlah_data
+berapa total ulasan yang dipakai,jumlah_data
+datanya ada berapa baris,jumlah_data
+terakhir kali data diperbarui kapan,status_pipeline
+pembaruan otomatis terakhir sukses tidak,status_pipeline
+data ini dari pengambilan kapan,status_pipeline
+kapan terakhir kali data diambil,status_pipeline
+apakah pembaruan otomatis berhasil,status_pipeline
+mae nya itu maksudnya gimana,arti_mae
+jelaskan istilah mae dong,arti_mae
+mae artinya apa,arti_mae
+apa itu mae,arti_mae
+r2 nol artinya apa,arti_r2
+apa maksud r kuadrat negatif,arti_r2
+jelasin r2 dong,arti_r2
+r kuadrat artinya apa,arti_r2
+kenapa r2 nya negatif,arti_r2
+apa saja kekurangan model ini,keterbatasan
+apakah hasil analisisnya bisa dipercaya,keterbatasan
+ada batasan apa dari analisis ini,keterbatasan
+seberapa bisa dipercaya hasilnya,keterbatasan
+apa kelemahan analisis ini,keterbatasan
+cara beli tiket kereta di aplikasi,fallback
+kereta ke jogja jam berapa,fallback
+siapa pemenang piala dunia,fallback
+cuaca besok gimana,fallback
+tolong buatkan puisi,fallback
+bagaimana cara refund tiket,fallback
+harga tiket kereta ke jakarta,fallback
+cuaca hari ini bagaimana,fallback
+siapa presiden indonesia,fallback
+resep nasi goreng,fallback
+cara refund tiket kereta,fallback
