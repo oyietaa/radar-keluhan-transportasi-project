@@ -28,3 +28,7 @@ m["mae_tebak_rata2"] = round(mean_absolute_error(yb, [ya.mean()] * len(yb)), 3)
 m["persen_membantu_nol"] = round(float((df["thumbsUpCount"] == 0).mean() * 100), 1)
 p.write_text(json.dumps(m, ensure_ascii=False, indent=2), encoding="utf-8")
 print("metrik.json diperbarui")
+
+pd.DataFrame({"aktual": yb.values, "prediksi": reg.predict(Xb)}).to_csv(
+    MODEL_DIR / "uji_regresi.csv", index=False)
+print("uji_regresi.csv dibuat")
