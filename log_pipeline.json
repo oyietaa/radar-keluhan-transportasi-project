@@ -10,5 +10,29 @@
     "status": "berhasil",
     "baru": 0,
     "pesan": ""
+  },
+  {
+    "waktu": "2026-11-20T18:49:59",
+    "status": "berhasil",
+    "baru": 0,
+    "pesan": ""
+  },
+  {
+    "waktu": "2026-11-20T18:51:52",
+    "status": "berhasil",
+    "baru": 0,
+    "pesan": ""
+  },
+  {
+    "waktu": "2026-11-20T19:02:09",
+    "status": "gagal",
+    "baru": 0,
+    "pesan": "Tidak ada ulasan yang terambil. Cek koneksi atau scraper."
+  },
+  {
+    "waktu": "2026-11-20T19:03:24",
+    "status": "berhasil",
+    "baru": 0,
+    "pesan": ""
   }
 ]
