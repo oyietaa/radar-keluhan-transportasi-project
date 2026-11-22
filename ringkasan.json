@@ -1,19 +1,19 @@
 {
-  "diperbarui": "2026-11-22T06:15",
-  "total_ulasan": 3050,
-  "ulasan_baru": 44,
+  "diperbarui": "2026-11-22T13:51",
+  "total_ulasan": 3057,
+  "ulasan_baru": 7,
   "persen_sentimen": {
-    "positif": 52.1,
+    "positif": 52.2,
     "netral": 8.0,
-    "negatif": 39.9
+    "negatif": 39.8
   },
   "rata_rata_rating": 3.38,
   "tema_terbanyak": "Aplikasi error, lambat, dan bug",
   "jumlah_per_tema": {
-    "Aplikasi error, lambat, dan bug": 913,
+    "Aplikasi error, lambat, dan bug": 914,
     "Gagal masuk dan transaksi bermasalah": 469,
-    "Apresiasi layanan KAI": 342,
-    "Kemudahan memesan tiket": 96
+    "Apresiasi layanan KAI": 343,
+    "Kemudahan memesan tiket": 97
   },
-  "ulasan_singkat": 1230
+  "ulasan_singkat": 1234
 }
