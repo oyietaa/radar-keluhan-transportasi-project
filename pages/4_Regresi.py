@@ -19,7 +19,17 @@ c3.metric("MAE tebak rata-rata", metrik["mae_tebak_rata2"])
 c4.metric("R²", metrik["regresi_r2"])
 
 st.subheader("Aktual dibandingkan prediksi (data uji)")
-st.scatter_chart(uji, x="aktual", y="prediksi")
+sembunyi = st.checkbox("Sembunyikan ulasan ekstrem (aktual > 20)", value=True)
+tampil = uji[uji["aktual"] <= 20] if sembunyi else uji
+st.scatter_chart(tampil, x="aktual", y="prediksi")
+if sembunyi:
+    st.caption(f"{len(uji) - len(tampil)} ulasan dengan 'membantu' di atas 20 "
+               "tidak ditampilkan di grafik, tetapi tetap dihitung dalam MAE dan R².")
+
+st.write("Rata-rata prediksi menurut nilai aktual (angka 5 berarti 5 atau lebih)")
+ringkas = (uji.assign(aktual=uji["aktual"].clip(upper=5))
+              .groupby("aktual")["prediksi"].mean().round(2))
+st.bar_chart(ringkas)
 
 st.subheader("Interpretasi")
 st.markdown(
