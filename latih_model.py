@@ -8,11 +8,15 @@ from sklearn.metrics import classification_report, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from config import CLEAN_CSV, MODEL_DIR
+import sys
+if "--yakin" not in sys.argv:
+    sys.exit("Menjalankan ulang akan mengganti model dan nomor cluster, sehingga "
+             "models/tema.json harus dibuat ulang. Gunakan --yakin bila sengaja.")
 
 def label(skor):
     return "negatif" if skor <= 2 else ("netral" if skor == 3 else "positif")
 
-df = pd.read_csv(CLEAN_CSV).dropna(subset=["teks_bersih"])
+df = pd.read_csv("data/data_latih_awal.csv").dropna(subset=["teks_bersih"])
 MODEL_DIR.mkdir(exist_ok=True)
 metrik = {}
 

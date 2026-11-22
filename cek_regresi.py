@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from config import CLEAN_CSV
 from config import MODEL_DIR
 
-df = pd.read_csv(CLEAN_CSV)
+df = pd.read_csv("data/data_latih_awal.csv")
 df["jumlah_kata"] = df["teks_asli"].str.split().str.len()
 Xa, Xb, ya, yb = train_test_split(
     df[["jumlah_kata", "score"]], df["thumbsUpCount"],
