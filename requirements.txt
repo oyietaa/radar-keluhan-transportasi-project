@@ -5,3 +5,4 @@ joblib
 google-play-scraper
 requests
 pytest
+plotly
