@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from muat import muat_data, muat_ringkasan
 
@@ -21,7 +22,27 @@ k4.metric("Positif (prediksi)", f"{p['positif']}%")
 
 st.write(f"Data diperbarui: **{r['diperbarui']}** | "
          f"ulasan baru pada pembaruan terakhir: **{r['ulasan_baru']}**")
+st.caption("Waktu pembaruan otomatis dari GitHub memakai UTC (WIB = UTC + 7 jam).")
 
-st.subheader("Sentimen (prediksi model)")
-st.bar_chart(df["sentimen"].value_counts())
+kiri, kanan = st.columns(2)
+
+with kiri:
+    st.subheader("Sentimen: prediksi model dan menurut rating")
+    urutan = ["positif", "netral", "negatif"]
+    banding = pd.DataFrame({
+        "prediksi model (%)": (df["sentimen"].value_counts(normalize=True) * 100)
+                              .reindex(urutan).round(1),
+        "menurut rating (%)": (df["sentimen_rating"].value_counts(normalize=True) * 100)
+                              .reindex(urutan).round(1),
+    })
+    st.bar_chart(banding)
+    st.caption("Model dilatih dari rating bintang, jadi keduanya mirip tetapi tidak sama. "
+               "Angka menurut rating adalah label yang menjadi target pelatihan.")
+
+with kanan:
+    st.subheader("Tema keluhan (ulasan 4 kata atau lebih)")
+    st.bar_chart(pd.Series(r["jumlah_per_tema"]))
+    st.caption(f"{r['ulasan_singkat']:,} ulasan yang lebih pendek tidak ikut "
+               "pengelompokan tema.")
+
 st.info("Gunakan menu di sebelah kiri untuk membuka halaman lain.")

@@ -11,6 +11,8 @@ uji = pd.read_csv(MODEL_DIR / "uji_regresi.csv")
 
 st.write("Fitur: jumlah kata dan rating. Target: jumlah 'membantu'. "
          "Data dibagi 80% latih dan 20% uji (random_state=42).")
+st.caption("Model dilatih dan diuji pada 2.987 ulasan awal (data/data_latih_awal.csv). "
+           "Ulasan yang ditambahkan pipeline tidak mengubah angka di halaman ini.")
 
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("MAE model", metrik["regresi_mae"])

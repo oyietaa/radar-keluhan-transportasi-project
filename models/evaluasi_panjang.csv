@@ -1,0 +1,5 @@
+kelompok,jumlah,akurasi,netral_prediksi,netral_rating
+1-2 kata,199,0.95,0.04,0.015
+3-5 kata,91,0.824,0.044,0.055
+6-10 kata,93,0.72,0.108,0.075
+>10 kata,215,0.73,0.093,0.098

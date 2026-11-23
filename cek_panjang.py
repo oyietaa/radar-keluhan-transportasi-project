@@ -22,3 +22,5 @@ hasil = uji.groupby("kelompok", observed=True).agg(
     netral_prediksi=("prediksi", lambda s: (s == "netral").mean()),
     netral_rating=("rating_label", lambda s: (s == "netral").mean()))
 print(hasil.round(3))
+
+hasil.round(3).to_csv(MODEL_DIR / "evaluasi_panjang.csv")
