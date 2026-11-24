@@ -22,10 +22,17 @@ st.write(f"{t.angka(len(cluster))} ulasan dikelompokkan (4 kata atau lebih). "
          "dan tidak ikut clustering.")
 
 hitung = cluster["tema"].value_counts().rename_axis("tema").reset_index(name="jumlah")
-f = px.treemap(hitung, path=["tema"], values="jumlah", color="tema",
-               color_discrete_map=t.WARNA_TEMA)
-f.update_traces(textinfo="label+value")
-st.plotly_chart(t.gaya(f, 320))
+hitung["persen"] = hitung["jumlah"] / hitung["jumlah"].sum() * 100
+hitung["label"] = hitung.apply(
+    lambda r: f"{t.angka(r['jumlah'])} ulasan ({t.angka(r['persen'], 1)}%)", axis=1)
+f = px.bar(hitung, x="jumlah", y="tema", orientation="h", color="tema",
+           color_discrete_map=t.WARNA_TEMA, text="label",
+           labels={"jumlah": "Jumlah ulasan", "tema": ""})
+f.update_traces(textposition="outside", cliponaxis=False)
+f.update_layout(showlegend=False)
+f.update_yaxes(categoryorder="total ascending")
+f.update_xaxes(range=[0, hitung["jumlah"].max() * 1.4])
+st.plotly_chart(t.gaya(f, 300))
 
 opsi = [n for n in t.WARNA_TEMA if n in nama_ke_kode and n in set(cluster["tema"])]
 pilih = st.selectbox("Pilih tema untuk dilihat lebih dekat", opsi)
