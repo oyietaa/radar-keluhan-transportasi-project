@@ -1,40 +1,60 @@
 import json
+import plotly.express as px
 import streamlit as st
+import tampilan as t
 from config import MODEL_DIR
 from muat import muat_data
 
-st.title("Tema Keluhan")
-df = muat_data()
+t.siapkan("Tema Keluhan", "🧭")
+df = t.filter_sidebar(muat_data(), "tema")
 info = json.loads((MODEL_DIR / "cluster_info.json").read_text(encoding="utf-8"))
 tema = json.loads((MODEL_DIR / "tema.json").read_text(encoding="utf-8"))
-
+nama_ke_kode = {v: k for k, v in tema.items() if k != "-1"}
 cluster = df[df["cluster"] >= 0]
 singkat = int((df["cluster"] == -1).sum())
-st.write(f"{len(cluster):,} ulasan dikelompokkan (4 kata atau lebih). "
-         f"{singkat:,} ulasan yang lebih pendek diberi tema 'Ulasan singkat' "
+
+st.title("Tema keluhan")
+if cluster.empty:
+    st.warning("Tidak ada ulasan 4 kata atau lebih pada filter ini, jadi tema belum bisa ditampilkan.")
+    st.stop()
+st.write(f"{t.angka(len(cluster))} ulasan dikelompokkan (4 kata atau lebih). "
+         f"{t.angka(singkat)} ulasan yang lebih pendek diberi tema 'Ulasan singkat' "
          "dan tidak ikut clustering.")
 
-st.subheader("Ukuran tiap tema")
-st.bar_chart(cluster["tema"].value_counts())
+hitung = cluster["tema"].value_counts().rename_axis("tema").reset_index(name="jumlah")
+f = px.treemap(hitung, path=["tema"], values="jumlah", color="tema",
+               color_discrete_map=t.WARNA_TEMA)
+f.update_traces(textinfo="label+value")
+st.plotly_chart(t.gaya(f, 320))
 
-st.subheader("Kata dominan dan contoh ulasan")
-for kode, nama in tema.items():
-    if kode == "-1":
-        continue
-    sub = cluster[cluster["tema"] == nama]
-    with st.expander(f"{nama} ({len(sub):,} ulasan)", expanded=True):
-        st.write("Kata dominan: " + ", ".join(info[kode]["kata"]))
-        for teks in sub["teks_asli"].sample(min(3, len(sub)), random_state=1):
-            st.markdown(f"- {teks[:200]}")
+opsi = [n for n in t.WARNA_TEMA if n in nama_ke_kode and n in set(cluster["tema"])]
+pilih = st.selectbox("Pilih tema untuk dilihat lebih dekat", opsi)
+sub = cluster[cluster["tema"] == pilih]
+kode = nama_ke_kode[pilih]
+t.papan([
+    (t.angka(len(sub)), "ulasan di tema ini", t.WARNA_TEMA[pilih]),
+    (t.angka(len(sub) / len(cluster) * 100, 1) + "%", "dari ulasan yang dikelompokkan", t.WARNA["baja"]),
+    (t.angka((sub["sentimen"] == "negatif").mean() * 100, 1) + "%", "bernada negatif", t.WARNA["merah"]),
+    (t.angka(sub["score"].mean(), 2), "rata-rata rating", t.WARNA["baja"]),
+])
+st.write("**Kata dominan:** " + ", ".join(info[kode]["kata"]))
 
-st.subheader("Pembeda antartema dan keterbatasan")
-st.markdown(
-    "- Dua tema berisi pujian (apresiasi layanan dan kemudahan memesan), "
-    "dua tema berisi keluhan (gagal masuk/transaksi dan error/lambat/bug).\n"
-    "- Tema keluhan masih tumpang tindih: 'tidak bisa dibuka' dan 'error terus' "
-    "sangat berdekatan.\n"
-    "- Tema 'Aplikasi error, lambat, dan bug' berisi separuh ulasan dan masih "
-    "bercampur dengan keluhan biaya serta keluhan di luar aplikasi.\n"
-    "- Pengelompokan memakai kata (TF-IDF), bukan makna, sehingga celaan yang "
-    "memakai kata pujian bisa salah masuk."
-)
+if "seed_contoh" not in st.session_state:
+    st.session_state.seed_contoh = 1
+
+def contoh_lain():
+    st.session_state.seed_contoh += 1
+
+st.button("Tampilkan contoh lain", on_click=contoh_lain)
+for teks in sub["teks_asli"].sample(min(5, len(sub)), random_state=st.session_state.seed_contoh):
+    st.markdown("> " + teks[:300].replace("\n", " "))
+
+with st.expander("Pembeda antartema dan keterbatasan"):
+    st.markdown(
+        "- Dua tema berisi pujian (apresiasi layanan dan kemudahan memesan), dua tema berisi keluhan "
+        "(gagal masuk atau transaksi, dan error atau lambat atau bug).\n"
+        "- Tema keluhan masih tumpang tindih: 'tidak bisa dibuka' dan 'error terus' sangat berdekatan.\n"
+        "- Tema 'Aplikasi error, lambat, dan bug' berisi separuh ulasan dan masih bercampur dengan "
+        "keluhan biaya serta keluhan di luar aplikasi.\n"
+        "- Pengelompokan memakai kata (TF-IDF), bukan makna, sehingga celaan yang memakai kata pujian "
+        "bisa salah masuk.")

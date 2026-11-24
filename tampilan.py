@@ -1,15 +1,15 @@
 import streamlit as st
 
-WARNA = {"baja": "#E6EDF7", "rel": "#4C8DF6", "hijau": "#2FBF8A", "kuning": "#F5B83D",
-         "merah": "#F0616D", "abu": "#8FA1B8", "panel": "#16263D"}
-WARNA_SENTIMEN = {"positif": "#2FBF8A", "netral": "#F5B83D", "negatif": "#F0616D"}
+WARNA = {"baja": "#1B2A41", "rel": "#2F6FD6", "hijau": "#1E9E6A", "kuning": "#E3A008",
+         "merah": "#D6293E", "abu": "#7A8798", "panel": "#F7F9FB"}
+WARNA_SENTIMEN = {"positif": "#1E9E6A", "netral": "#E3A008", "negatif": "#D6293E"}
 URUTAN_SENTIMEN = ["positif", "netral", "negatif"]
 WARNA_TEMA = {
-    "Apresiasi layanan KAI": "#2FBF8A",
-    "Kemudahan memesan tiket": "#86DDBB",
-    "Gagal masuk dan transaksi bermasalah": "#F08A4B",
-    "Aplikasi error, lambat, dan bug": "#E5484D",
-    "Ulasan singkat": "#8FA1B8",
+    "Apresiasi layanan KAI": "#1E9E6A",
+    "Kemudahan memesan tiket": "#6CC7A0",
+    "Gagal masuk dan transaksi bermasalah": "#E8743B",
+    "Aplikasi error, lambat, dan bug": "#A3162B",
+    "Ulasan singkat": "#7A8798",
 }
 TEMA_KELUHAN = ["Gagal masuk dan transaksi bermasalah", "Aplikasi error, lambat, dan bug"]
 
@@ -21,15 +21,15 @@ html, body, .stApp, button, input, textarea, h1, h2, h3, h4, p, label, th, td {
 h1 { font-weight: 800; letter-spacing: -0.02em; }
 h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 .sorot { font-size: 1.3rem; font-weight: 600; line-height: 1.4; max-width: 46rem; margin: 0 0 1rem; }
-.papan { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #3A5173;
-  border-radius: 6px; background: #16263D; margin: 0.5rem 0 1.5rem; }
-.papan div { padding: 0.9rem 1.1rem; border-left: 1px solid #2B4060; }
+.papan { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #9FB0C5;
+  border-radius: 6px; background: #F7F9FB; margin: 0.5rem 0 1.5rem; }
+.papan div { padding: 0.9rem 1.1rem; border-left: 1px solid #D5DDE8; }
 .papan div:first-child { border-left: none; }
 .papan b { display: block; font-size: 2rem; font-weight: 800; line-height: 1.1;
   font-variant-numeric: tabular-nums; }
-.papan span { font-size: 0.85rem; color: #9FB2CC; }
+.papan span { font-size: 0.85rem; color: #4A5B73; }
 @media (max-width: 700px) { .papan { grid-template-columns: repeat(2, 1fr); } }
-[data-testid="stSidebar"] { border-right: 1px solid #26384F; }
+[data-testid="stSidebar"] { border-right: 1px solid #C9D4E1; }
 .stTabs [data-baseweb="tab"] { font-weight: 600; }
 """
 
@@ -48,12 +48,12 @@ def papan(sel):
 
 def gaya(fig, tinggi=340, hover="closest"):
     fig.update_layout(
-        template="plotly_dark", height=tinggi, margin=dict(l=8, r=8, t=30, b=8),
+        template="plotly_white", height=tinggi, margin=dict(l=8, r=8, t=30, b=8),
         hovermode=hover, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Plus Jakarta Sans, sans-serif", color=WARNA["baja"]),
         legend=dict(orientation="h", y=-0.2, title_text=""))
     fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(gridcolor="#26384F", zerolinecolor="#26384F")
+    fig.update_yaxes(gridcolor="#D3DCE7", zerolinecolor="#D3DCE7")
     return fig
 
 def _dua(rentang, tmin, tmax):
