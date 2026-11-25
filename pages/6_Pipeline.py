@@ -34,7 +34,7 @@ f = px.scatter(log, x="waktu", y="baru", color="status",
                hover_data=["pesan"], labels={"waktu": "Waktu", "baru": "Ulasan baru"})
 f.update_traces(marker_size=13)
 st.plotly_chart(t.gaya(f, 320))
-st.caption("Catatan dari laptop memakai WIB, catatan dari GitHub Actions memakai UTC (WIB = UTC + 7 jam). "
+st.caption("Semua waktu dalam WIB. Dua catatan awal dari GitHub Actions semula tercatat UTC dan sudah dikoreksi ke WIB. "
            "Catatan awal mencakup uji coba, termasuk uji kegagalan dengan internet dimatikan. "
            "Log hanya menyimpan 50 catatan terakhir.")
 st.dataframe(log.iloc[::-1], hide_index=True)

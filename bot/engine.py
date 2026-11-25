@@ -13,6 +13,8 @@ NORMALISASI = {
     "ketemu": "bertemu", "aja": "saja", "jelek": "negatif", "buruk": "negatif",
     "mengeluh": "keluhan", "komplain": "keluhan", "dikeluhkan": "keluhan",
     "kekurangan": "kelemahan", "dipercaya": "akurat",
+    "kategori": "tema", "topik": "tema", "kelompok": "tema",
+    "skrip": "pipeline", "script": "pipeline",
 }
 STOPWORDS = {"yang", "di", "ke", "dari", "dan", "atau", "itu", "ini", "untuk",
              "dengan", "adalah", "apa", "saya", "mau", "ingin", "tolong",

@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import pandas as pd
 from config import CLEAN_CSV, RINGKASAN
 
@@ -9,7 +9,7 @@ def buat_ringkasan(df, jumlah_baru=0):
     pct = (df["sentimen"].value_counts(normalize=True) * 100).round(1).to_dict()
     tema = df.loc[df["tema"] != SINGKAT, "tema"].value_counts()
     return {
-        "diperbarui": datetime.now().isoformat(timespec="minutes"),
+        "diperbarui": datetime.now(timezone(timedelta(hours=7))).replace(tzinfo=None).isoformat(timespec="minutes"),
         "total_ulasan": int(len(df)),
         "ulasan_baru": int(jumlah_baru),
         "persen_sentimen": {k: pct.get(k, 0.0)

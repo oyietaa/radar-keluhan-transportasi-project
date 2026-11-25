@@ -1,0 +1,42 @@
+kalimat,intent
+pagi bot,salam
+oke saya pamit dulu,perpisahan
+sampai besok ya,perpisahan
+terima kasih sudah membantu,terima_kasih
+thanks bot,terima_kasih
+kamu dibuat untuk apa,identitas
+apa tugas bot ini,identitas
+ulasan yang kecewa berapa persen,sentimen
+proporsi ulasan positif berapa,sentimen
+apa yang paling sering dikeluhkan pengguna,tema
+jenis keluhan nomor satu apa,tema
+masalah apa yang dominan di ulasan,tema
+rata-rata bintangnya berapa,rating
+rata rata penilaian ulasannya berapa,rating
+berapa ulasan yang masuk analisis,jumlah_data
+total ulasan ada berapa,jumlah_data
+kapan terakhir pipeline berjalan,status_pipeline
+apakah pengambilan data terakhir berhasil,status_pipeline
+mae itu singkatan dari apa,arti_mae
+jelaskan arti mae,arti_mae
+r2 yang negatif artinya apa,arti_r2
+apa arti nilai r kuadrat,arti_r2
+apa saja kelemahan analisis ini,keterbatasan
+seberapa bisa dipercaya model ini,keterbatasan
+ulasan ini diambil dari mana,sumber_data
+platform mana yang jadi sumber ulasannya,sumber_data
+jelaskan cara kerja pipeline otomatis,cara_pipeline
+bagaimana data diperbarui secara otomatis,cara_pipeline
+seberapa sering data diambil,jadwal_pipeline
+kapan jadwal pengambilan data,jadwal_pipeline
+ulasan disimpan sampai kapan,masa_simpan
+berapa lama data disimpan,masa_simpan
+apakah model regresinya akurat,hasil_regresi
+bagaimana hasil regresi jumlah membantu,hasil_regresi
+tema apa saja yang ada,daftar_tema
+sebutkan tema keluhan yang ditemukan,daftar_tema
+harga tiket kereta eksekutif,fallback
+siapa pemilik aplikasi ini,fallback
+cuaca di bandung hari ini,fallback
+buatkan saya puisi tentang kereta,fallback
+berapa kurs dolar hari ini,fallback

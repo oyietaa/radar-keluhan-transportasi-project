@@ -66,5 +66,5 @@ with kanan:
     st.plotly_chart(t.gaya(f3, 340))
     st.caption("Hanya ulasan 4 kata atau lebih yang dikelompokkan.")
 
-st.caption(f"Data diperbarui {r['diperbarui']} (pembaruan otomatis memakai UTC, WIB = UTC + 7 jam). "
+st.caption(f"Data diperbarui {r['diperbarui']} (waktu dicatat dalam WIB). "
            "Gunakan menu di kiri untuk membuka halaman lain.")
