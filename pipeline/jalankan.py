@@ -6,7 +6,8 @@ from pipeline.ambil import ambil
 from pipeline.bersihkan import bersihkan_df
 from pipeline.prediksi import tambah_prediksi
 from pipeline.retensi import terapkan_retensi, bersihkan_raw
-from pipeline.ringkasan import buat_ringkasan, pesan_ringkas
+from pipeline.ringkasan import buat_ringkasan
+from pipeline.pesan import pesan_sukses, pesan_gagal
 from pipeline.telegram import kirim
 
 WIB = timezone(timedelta(hours=7))
@@ -28,6 +29,7 @@ def main():
         nama = f"mentah_{sekarang():%Y-%m-%d_%H%M}.csv"
         mentah.to_csv(RAW_DIR / nama, index=False)
         lama = pd.read_csv(CLEAN_CSV, parse_dates=["at"])
+        neg_sebelum = (lama["sentimen"] == "negatif").mean() * 100 if "sentimen" in lama.columns else None
         bersih = bersihkan_df(mentah)
         baru = bersih[~bersih["reviewId"].isin(lama["reviewId"])]
         if len(baru):
@@ -42,11 +44,11 @@ def main():
         RINGKASAN.write_text(json.dumps(ringkas, ensure_ascii=False, indent=2),
                              encoding="utf-8")
         tulis_log("berhasil", len(baru))
-        kirim(pesan_ringkas(ringkas))
+        kirim(pesan_sukses(ringkas, baru, neg_sebelum), pakai_html=True)
         print("Selesai:", len(baru), "ulasan baru;", len(semua), "ulasan total")
     except Exception as e:
         tulis_log("gagal", 0, str(e))
-        kirim(f"Pengambilan gagal: {e}")
+        kirim(pesan_gagal(e), pakai_html=True)
         raise
 
 if __name__ == "__main__":
